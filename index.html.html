@@ -1,191 +1,104 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en-US">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>壓力－復原力整合指數測驗</title>
-  <style>
-    :root {
-      --primary: #5f7f8a;       /* 低彩度藍綠 */
-      --primary-dark: #4a666f;  /* CTA 深色 */
-      --secondary: #c9b8a3;     /* 淡沙色 */
-      --bg: #f6f7f6;            /* 亮暖灰背景 */
-      --card: #ffffff;
-      --text-main: #2f3a3d;
-      --text-sub: #6b7280;
-      --divider: #e5e7eb;
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
-      background: var(--bg);
-      margin: 0;
-      padding: 20px 12px;
-      color: var(--text-main);
-    }
-    .container {
-      max-width: 720px;
-      margin: auto;
-      background: var(--card);
-      border-radius: 16px;
-      padding: 28px 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-    }
-    h1 {
-      font-size: 1.6rem;
-      margin-bottom: 6px;
-      color: var(--primary-dark);
-    }
-    .subtitle {
-      color: var(--text-sub);
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-    .question {
-      margin-bottom: 28px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--divider);
-    }
-    .question:last-child {
-      border-bottom: none;
-    }
-    .question p {
-      margin-bottom: 12px;
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
-    .scale {
-      display: flex;
-      justify-content: space-between;
-      gap: 4px;
-    }
-    .scale label {
-      flex: 1;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-sub);
-    }
-    button {
-      width: 100%;
-      padding: 16px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 12px;
-      background: var(--primary);
-      color: white;
-      cursor: pointer;
-      margin-top: 12px;
-    }
-    button:hover {
-      background: var(--primary-dark);
-    }
-    .result {
-      margin-top: 32px;
-      padding: 20px;
-      background: #f9fafb;
-      border-radius: 14px;
-      display: none;
-    }
-    .type {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--primary-dark);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stress–Resilience Index 測驗</title>
+<style>
+:root {
+  --primary: #5f7f8a;
+  --primary-dark: #4a666f;
+  --secondary: #c9b8a3;
+  --bg: #f6f7f6;
+  --card: #ffffff;
+  --text-main: #2f3a3d;
+  --text-sub: #6b7280;
+  --divider: #e5e7eb;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif;
+  background: var(--bg);
+  margin: 0;
+  padding: 20px 12px;
+  color: var(--text-main);
+}
+.container {
+  max-width: 720px;
+  margin: auto;
+  background: var(--card);
+  border-radius: 16px;
+  padding: 28px 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+h1 { font-size: 1.6rem; margin-bottom: 6px; color: var(--primary-dark); }
+.subtitle { color: var(--text-sub); margin-bottom: 28px; line-height: 1.6; font-size: 1rem; }
+.question { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--divider); }
+.question:last-child { border-bottom: none; }
+.question p { margin-bottom: 12px; font-size: 1.05rem; line-height: 1.6; }
+.scale { display: flex; justify-content: space-between; gap: 4px; }
+.scale label { flex: 1; text-align: center; font-size: 0.85rem; color: var(--text-sub); }
+button { width: 100%; padding: 16px; font-size: 1rem; border: none; border-radius: 12px; background: var(--primary); color: white; cursor: pointer; margin-top: 12px; }
+button:hover { background: var(--primary-dark); }
+.result { margin-top: 32px; padding: 20px; background: #f9fafb; border-radius: 14px; display: none; }
+.type { font-size: 1.3rem; font-weight: 600; margin-bottom: 8px; color: var(--primary-dark); }
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>你的壓力－復原力運作型態是？</h1>
-    <div class="subtitle">2 分鐘了解你在壓力下是如何運作的<br><span style="font-size:0.9rem; color:#6b7280;">作答方式：1–5 分（1 = 非常不同意｜5 = 非常同意）</span></div>
+<div class="container">
+  <h1>Stress–Resilience Index 測驗</h1>
+  <div class="subtitle">2 分鐘了解你在壓力下是如何運作的<br><span style="font-size:0.9rem; color:#6b7280;">作答方式：1–5 分（1 = 非常不同意｜5 = 非常同意）</span></div>
 
-    <form id="quiz">
-      <script>
-        const questions = [
-          "最近我常覺得事情多到喘不過氣",
-          "即使沒有特別事件，我也很難真正放鬆",
-          "我腦中常同時想著很多未完成的事",
-          "一遇到壓力，我的情緒起伏會變得明顯",
-          "在壓力下，我容易煩躁或失去耐心",
-          "壓力會快速影響我的專注力或判斷力",
-          "壓力事件過後，我通常能在短時間內恢復狀態",
-          "即使累了，我也知道怎麼讓自己慢慢回穩",
-          "睡一覺或休息後，我大多能重新充電",
-          "我清楚哪些方式能幫助我紓解壓力",
-          "當狀態不佳時，我知道該先處理什麼",
-          "我能主動調整步調，而不是硬撐"
-        ];
-        document.write(questions.map((q, i) => `
-          <div class="question">
-            <p>${i+1}. ${q}</p>
-            <div class="scale">
-              ${[1,2,3,4,5].map(v => `<label><input type="radio" name="q${i}" value="${v}" required><br>${v}</label>`).join('')}
-            </div>
-          </div>
-        `).join(''));
-      </script>
-
-      <button type="submit">查看我的結果</button>
-    </form>
-
-    <div id="result" class="result">
-      <div class="type" id="type"></div>
-      <div id="tagline" style="margin-bottom:12px; font-size:1rem; color:#4b5563;"></div>
-      <div id="desc"></div>
-      <hr style="margin:16px 0;">
-      <div style="font-size:0.95rem; color:#555;">
-        🔒 <strong>你的完整壓力－復原力報告尚未解鎖</strong><br>
-        解鎖後你將獲得：
-        <ul>
-          <li>雙指數詳細解析（壓力 × 復原力）</li>
-          <li>你最容易耗能的 3 種情境</li>
-          <li>專屬於你型態的調節與復原建議</li>
-        </ul>
-      </div>
-      <button style="margin-top:12px; background:#16a34a;" onclick="alert('此為 MVP 示意，可串接 Stripe / LINE Pay')">立即解鎖完整報告（NT$99）</button>
-    </div>
-      <div id="desc"><button style="margin-top:10px; background:#cbd5e1; color:#1f2937;" onclick="navigator.clipboard.writeText('我的壓力－復原力型態是【'+type+'】｜'+tagline); alert('已複製，可貼上分享');">分享我的型態</button>
-    </div>
+  <div id="questions"></div>
+  <button onclick="calculateResult()">送出測驗</button>
+  <div class="result" id="result">
+    <div class="type" id="type"></div>
+    <div id="tagline" style="margin-bottom:12px; font-size:1rem; color:#4b5563;"></div>
+    <div id="desc" style="font-size:0.95rem; color:#2f3a3d;"></div>
+    <button style="margin-top:10px; background:#cbd5e1; color:#1f2937;" onclick="navigator.clipboard.writeText('我的壓力－復原力型態是【'+type+'】｜'+tagline); alert('已複製，可貼上分享');">分享我的型態</button>
   </div>
 </div>
+<script>
+const questionsData = [
+  "我能夠在壓力下維持冷靜。",
+  "我會尋求朋友或家人的支持。",
+  "即使遇到困難，我仍保持積極態度。",
+  "我在壓力下容易疲倦或焦躁。",
+  "我能迅速從挫折中恢復。",
+  "我覺得自己有能力應對生活中的挑戰。",
+  "壓力常讓我無法專心工作或學習。",
+  "我知道如何安排休息和調節心情。",
+  "我對未來保持希望和樂觀。",
+  "我感到自己在壓力下容易耗盡精力。",
+  "我有策略來管理壓力和情緒。",
+  "我能夠維持身心健康，即使面對挑戰。"
+];
+const questionsDiv = document.getElementById('questions');
+questionsData.forEach((q,i)=>{
+  const div = document.createElement('div');
+  div.className='question';
+  div.innerHTML=`<p>題目 ${i+1}: ${q}</p>
+  <div class='scale'>
+    <label>1</label><label>2</label><label>3</label><label>4</label><label>5</label>
+  </div>`;
+  questionsDiv.appendChild(div);
+});
 
-  <script>
-    document.getElementById('quiz').addEventListener('submit', function(e) {
-      e.preventDefault();
-      let values = [];
-      for (let i = 0; i < 12; i++) {
-        values.push(parseInt(document.querySelector(`input[name=q${i}]:checked`).value));
-      }
-
-      const stress = values.slice(0,6).reduce((a,b)=>a+b,0);
-      const resilience = (values.slice(6,9).map(v => 6-v).reduce((a,b)=>a+b,0)) + values.slice(9,12).reduce((a,b)=>a+b,0);
-
-      let type = "";
-      let desc = "";
-      let tagline = "";
-
-      if (stress >= 21 && resilience >= 21) {
-        type = "耐震推進型";
-        desc = "你能在高壓下維持運作，但需要留意長期耗損。";
-        tagline = "你不是沒有極限，而是習慣把極限往後放。";
-      } else if (stress >= 21 && resilience < 21) {
-        type = "過載燃燒型";
-        desc = "你正承受高壓且恢復較慢，最需要優先照顧自己。";
-        tagline = "你不是撐不住，而是撐太久了。";
-      } else if (stress < 21 && resilience >= 21) {
-        type = "彈性穩定型";
-        desc = "你目前狀態平衡，具備良好的調節能力。";
-        tagline = "你知道如何在前進與休息之間切換。";
-      } else {
-        type = "潛在耗損型";
-        desc = "壓力不高，但緩衝較少，需提早建立復原機制。";
-        tagline = "你需要的不是更努力，而是更多緩衝。";
-      }
-
-      document.getElementById('type').innerText = type;
-      document.getElementById('tagline').innerText = tagline;
-      document.getElementById('desc').innerText = desc;
-      document.getElementById('result').style.display = 'block';
-    });
-  </script>
+function calculateResult(){
+  let stress=0,resilience=0;
+  document.querySelectorAll('.question').forEach((q,i)=>{
+    let val=3;
+    if(i%2===0) stress+=val; else resilience+=val;
+  });
+  let type='',desc='',tagline='';
+  if(stress>=21 && resilience>=21){type='耐震推進型';desc='你能在高壓下維持運作，但需要留意長期耗損。';tagline='你不是沒有極限，而是習慣把極限往後放。';}
+  else if(stress>=21 && resilience<21){type='過載燃燒型';desc='你正承受高壓且恢復較慢，最需要優先照顧自己。';tagline='你不是撐不住，而是撐太久了。';}
+  else if(stress<21 && resilience>=21){type='彈性穩定型';desc='你目前狀態平衡，具備良好的調節能力。';tagline='你知道如何在前進與休息之間切換。';}
+  else{type='潛在耗損型';desc='壓力不高，但緩衝較少，需提早建立復原機制。';tagline='你需要的不是更努力，而是更多緩衝。';}
+  document.getElementById('type').innerText=type;
+  document.getElementById('tagline').innerText=tagline;
+  document.getElementById('desc').innerText=desc;
+  document.getElementById('result').style.display='block';
+}
+</script>
 </body>
 </html>
